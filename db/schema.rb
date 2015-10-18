@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018165218) do
+ActiveRecord::Schema.define(version: 20151018191911) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string   "name"
+    t.string   "origin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "artworks", force: :cascade do |t|
     t.string   "title"
@@ -20,6 +27,18 @@ ActiveRecord::Schema.define(version: 20151018165218) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "artist_id"
   end
+
+  add_index "artworks", ["artist_id"], name: "index_artworks_on_artist_id"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "textbox"
+    t.integer  "artwork_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["artwork_id"], name: "index_comments_on_artwork_id"
 
 end
