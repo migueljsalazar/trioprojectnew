@@ -78,11 +78,15 @@ h6 {
 }
 
 .bg-light-gray {
-    background-color: #f7f7f7;
+    background-image: url(list.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bg-darkest-gray {
-    background-color: #222;
+    background-image: url(wall.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .btn-primary {
@@ -192,7 +196,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-brand {
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    font-family: "Raleway Dots","Helvetica Neue",Helvetica,Arial,cursive;
     color: #fed136;
 }
 
@@ -282,7 +286,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url(header-bg.jpg);
+    background-image: url(wynwood.jpg);
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
