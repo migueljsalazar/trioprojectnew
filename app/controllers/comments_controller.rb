@@ -64,7 +64,7 @@ class CommentsController < ApplicationController
   def upvote
     @comment = Comment.find(params[:id])
     @comment.votes.create
-    redirect_to(comments_path)
+    redirect_to :back
   end
 
   # def downvote
