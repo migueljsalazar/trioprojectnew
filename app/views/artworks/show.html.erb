@@ -27,8 +27,11 @@
 	<%= comment.textbox %>
 	<br>
 	Added: <%= time_ago_in_words(comment.created_at) %> ago
+  <br>
+  <%= pluralize(comment.votes.count, "vote") %>
+  <%= button_to 'like', upvote_comment_path(comment), method: :post %>
 </p>
-<% end %>
+<% end %> 
 
 <h3>New Comment</h3>
 
