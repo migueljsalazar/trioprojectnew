@@ -67,6 +67,11 @@ class CommentsController < ApplicationController
     redirect_to(comments_path)
   end
 
+  def downvote
+    @comment = Comment.find(params[:id])
+    @comment.votes.last.destroy
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
