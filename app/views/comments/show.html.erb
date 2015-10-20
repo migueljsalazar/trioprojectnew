@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Write how ya feel!:</strong>
+  <strong>Here is your comment!:</strong>
   <%= @comment.textbox %>
 </p>
 
 <p>
   <strong>Artwork:</strong>
-  <%= @comment.artwork.title %>
+  <%= @comment.artwork %>
 </p>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> | <% if @comment.artwork.nil? %>

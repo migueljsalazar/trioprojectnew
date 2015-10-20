@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments do
+    member do
+      post 'upvote'
+      # post 'downvote'
+    end
+  end
+
   resources :artworks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,7 +13,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'artworks#index'
   # get 'index2' => "artworks#index2"
-  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
