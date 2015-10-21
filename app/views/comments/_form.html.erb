@@ -11,21 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :textbox %><br>
+  <div class="field" style="text-align: left">
+    <%= f.label "  " %>
     <%= f.text_area :textbox %>
   </div>
 
   <% if @artwork.nil? %>
   <div class="field">
-    <%= f.label :artwork_id %><br>
+    <%= f.label :artwork_id %>
     <%= f.text_field :artwork_id %>
   </div>
   <% else %>
     <%= f.hidden_field :artwork_id, value: @artwork.id %>
     <% end %>
 
-  <div class="actions">
+  <div class="actions" style="text-align: left">
     <%= f.submit %>
   </div>
 <% end %>
