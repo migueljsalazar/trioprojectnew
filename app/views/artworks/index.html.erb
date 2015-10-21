@@ -30,6 +30,63 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+     #map {
+       width: 1,350px;
+       height: 500px;
+     }
+   </style>
+   <script src="https://maps.googleapis.com/maps/api/js"></script>
+   <script>
+     function initialize() {
+       var mapCanvas = document.getElementById('map');
+       var mapOptions = {
+         center: new google.maps.LatLng(25.801160, -80.199968),
+         zoom: 16,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+       }
+       var map = new google.maps.Map(mapCanvas, mapOptions)
+
+       var locations = [];
+         locations.push ( {name:"Kazki 1", latlng: new google.maps.LatLng(25.801199, -80.200104)})
+         locations.push ( {name:"Kazki 2", latlng: new google.maps.LatLng(25.801439, -80.199953)})
+         locations.push ( {name:"Kazki 3", latlng: new google.maps.LatLng(25.801607, -80.201799)})
+         locations.push ( {name:"Kashink", latlng: new google.maps.LatLng(25.801516, -80.201640)})
+         locations.push ( {name:"El Mac", latlng: new google.maps.LatLng(25.802260, -80.205127)})
+         locations.push ( {name:"Banksy", latlng: new google.maps.LatLng(25.801275, -80.199570)})
+
+       for(var i=0;i<locations.length;i++ ) {
+           var marker = new google.maps.Marker({position: locations[i].latlng,map:map, title:locations[i].name});
+
+       }
+
+       // var point = new google.maps.LatLng(25.801579, -80.202176);
+
+     
+
+
+       // var marker = new google.maps.Marker({
+       //     position:point,
+       //     map:map,
+       // })
+
+       var contentstring = '<div> Sup</div>';
+       var infowindow = new google.maps.InfoWindow({
+           content:contentstring
+       })
+
+       google.maps.event.addListener(marker,'click',function(){
+
+         infowindow.open(map,marker);
+
+
+       });
+}
+
+     
+
+     google.maps.event.addDomListener(window, 'load', initialize);
+   </script>
 
 </head>
 
@@ -94,32 +151,7 @@
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Discover</h2>
                     <h3 class="section-subheading">Find & Discover Wynwood Street Art</h3>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">E-Commerce</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">Responsive Design</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">Web Security</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                     <div id="map"></div>
                 </div>
             </div>
         </div>
@@ -137,10 +169,7 @@
 <br>
 <br>
     <div class="container">
-
         <div class="row">
-
-
             <div class="col-lg-4 col-md-4 col-xs-6 thumb">
                 <a class="thumbnail" href="http://localhost:3000/artworks/12">
                    <%= image_tag("artwork/elmac2.JPG", class: "img-responsive") %>
@@ -241,7 +270,7 @@
                                     <h4 class="subheading">Spread The Word</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">At WYNC, we're teeming with excitment and stand behind technology's adventure into transforming the creative fields. What soundcloud did for independent musicans, Viemo for indie-filmakers, we like to think WYNC could offer street artists in today's urban experiments.</p>
+                                    <p class="text-muted">At WYNC, we're teeming with excitement and stand behind technology's adventure into transforming the creative fields. What soundcloud did for independent musicans, Viemo for indie-filmakers, we like to think WYNC could offer street artists in today's urban experiments.</p>
                                 </div>
                             </div>
                         </li>
@@ -393,8 +422,6 @@
             </div>
         </div>
     </footer>
-
-   
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
