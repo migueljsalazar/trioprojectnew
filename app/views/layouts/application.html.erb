@@ -1,15 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Artproject</title>
+  <title>WYNC</title>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway+Dots' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+     #map {
+       width: 1,350px;
+       height: 500px;
+     }
+   </style>
+   <script src="https://maps.googleapis.com/maps/api/js"></script>
+   <script>
+     function initialize() {
+       var mapCanvas = document.getElementById('map');
+       var mapOptions = {
+         center: new google.maps.LatLng(25.801160, -80.199968),
+         zoom: 16,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+       }
+       var map = new google.maps.Map(mapCanvas, mapOptions)
+
+       var locations = [];
+         locations.push ( {name:"Kazki 1", latlng: new google.maps.LatLng(25.801199, -80.200104)})
+         locations.push ( {name:"Kazki 2", latlng: new google.maps.LatLng(25.801439, -80.199953)})
+         locations.push ( {name:"Kazki 3", latlng: new google.maps.LatLng(25.801607, -80.201799)})
+         locations.push ( {name:"Kashink", latlng: new google.maps.LatLng(25.801516, -80.201640)})
+         locations.push ( {name:"El Mac", latlng: new google.maps.LatLng(25.802260, -80.205127)})
+         locations.push ( {name:"Banksy", latlng: new google.maps.LatLng(25.801275, -80.199570)})
+
+       for(var i=0;i<locations.length;i++ ) {
+           var marker = new google.maps.Marker({position: locations[i].latlng,map:map, title:locations[i].name});
+
+       }
+
+       // var point = new google.maps.LatLng(25.801579, -80.202176);
+
+     
+
+
+       // var marker = new google.maps.Marker({
+       //     position:point,
+       //     map:map,
+       // })
+
+       var contentstring = '<div> Sup</div>';
+       var infowindow = new google.maps.InfoWindow({
+           content:contentstring
+       })
+
+       google.maps.event.addListener(marker,'click',function(){
+
+         infowindow.open(map,marker);
+
+
+       });
+}
+
+     
+
+     google.maps.event.addDomListener(window, 'load', initialize);
+   </script>
+
+
 </head>
-<body>
+<body id="page-top" class="index">
 
 <%= yield %>
 

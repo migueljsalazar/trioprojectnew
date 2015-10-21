@@ -22,7 +22,10 @@
  */
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
-$(function() {
+
+// functions
+
+function ready() {
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
@@ -30,14 +33,16 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
-});
+    $('body').scrollspy({
+    	target: '.navbar-fixed-top'
+	});
+}
 
 // Highlight the top nav as scrolling occurs
-$('body').scrollspy({
-    target: '.navbar-fixed-top'
-})
 
 // Closes the Responsive Menu on Menu Item Click
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
+$(document).ready(ready);
+$(document).on('page:load', ready);

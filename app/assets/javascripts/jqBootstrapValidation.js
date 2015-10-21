@@ -1,7 +1,3 @@
--//= require jquery
--//= require jquery_ujs
--//= require turbolinks
--//= require_tree .
 /* jqBootstrapValidation
  * A plugin for automating validation on Twitter Bootstrap formatted forms.
  *
