@@ -76,6 +76,7 @@
 <br>
     <div class="container">
         <div class="row">
+    <% @artworks.each do |artwork| %>   <% end %>
             <div class="col-lg-4 col-md-4 col-xs-6 thumb">
                 <a class="thumbnail" href="http://localhost:3000/artworks/12">
                    <%= image_tag("artwork/elmac2.JPG", class: "img-responsive") %>
@@ -110,6 +111,23 @@
     </div>
             </div>
         </div>
+
+        <p id="notice"><%= notice %></p>
+</table>
+<tr>
+    <% @artworks.each do |artwork| %>
+        <td><%= artwork.title %></td>
+        <td><%= link_to 'Show', artwork %></td>
+        <td><%= link_to 'Edit', edit_artwork_path(artwork) %></td>
+        <td><%= link_to 'Destroy', artwork_path(artwork), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+</table>
+
+<br>
+
+<%= link_to 'New Artwork', new_artwork_path %>
+
     </section>
 
     <!-- About Section -->
